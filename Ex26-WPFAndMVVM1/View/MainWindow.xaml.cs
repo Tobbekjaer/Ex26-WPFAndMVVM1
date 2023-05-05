@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex26_WPFAndMVVM1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,32 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ex26_WPFAndMVVM1
+namespace Ex26_WPFAndMVVM1.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel mvm = new MainViewModel(); 
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = mvm;
+
+
+        }
+
+        private void UpdateLabelbtn_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.MyLabelText = DateTime.Now.ToString();
+        }
+
+        private void UpdateTextBoxbtn_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.MyTextBoxText = DateTime.Now.ToString();
         }
     }
 }
